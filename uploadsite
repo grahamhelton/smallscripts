@@ -1,0 +1,6 @@
+#! /bin/bash
+cd ~/Documents/mysite/
+hugo
+cd public/
+aws s3 sync . s3://grahamhelton.com   
+aws cloudfront create-invalidation --distribution-id <YourDistribution ID> --paths "/*"
